@@ -10,6 +10,7 @@ public class GildedRoseTest {
 
     private static final String REGULAR_ITEM = "foo";
     private static final String AGED_BRIE = "Aged Brie";
+    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 
     @Test
     public void items_name_does_not_change() {
@@ -30,7 +31,7 @@ public class GildedRoseTest {
 
         app.updateQuality();
 
-        assertThat(app.items[0].sellIn, is(9));
+        assertThatItemSellinIs(app.items[0], 9);
     }
 
     @Test
@@ -110,7 +111,23 @@ public class GildedRoseTest {
         assertThatItemQualityIs(app.items[0], 50);
     }
 
-    private void assertThatItemQualityIs(Item item, int i) {
-        assertThat(item.quality, is(i));
+    @Test
+    public void given_a_sulfuras_item_when_pass_a_day_the_sellin_and_quality_not_changes() {
+        Item[] items = new Item[] { new Item(SULFURAS, 10, 10) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThatItemSellinIs(app.items[0], 10);
+        assertThatItemQualityIs(app.items[0], 10);
+    }
+
+    private void assertThatItemSellinIs(Item item, int expectedSellIn) {
+        assertThat(item.sellIn, is(expectedSellIn));
+    }
+
+    private void assertThatItemQualityIs(Item item, int expectedQuality) {
+        assertThat(item.quality, is(expectedQuality));
     }
 }
