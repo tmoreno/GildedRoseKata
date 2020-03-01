@@ -29,4 +29,15 @@ public class GildedRoseTest {
 
         assertThat(app.items[0].quality, is(4));
     }
+
+    @Test
+    public void when_sell_date_is_passed_then_quality_should_decrease_twice() {
+        Item[] items = new Item[] { new Item("foo", 0, 5) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].quality, is(3));
+    }
 }
