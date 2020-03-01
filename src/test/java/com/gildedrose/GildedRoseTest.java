@@ -62,4 +62,15 @@ public class GildedRoseTest {
 
         assertThat(app.items[0].quality, is(-1));
     }
+
+    @Test
+    public void the_quality_in_aged_brie_is_increased_by_one() {
+        Item[] items = new Item[] { new Item("Aged Brie", 10, 1) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].quality, is(2));
+    }
 }
