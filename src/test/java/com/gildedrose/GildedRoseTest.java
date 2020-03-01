@@ -20,7 +20,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void when_sell_date_is_not_passed_then_quality_should_decrease_by_one() {
+    public void given_a_regular_item_with_sellin_and_quality_when_pass_a_day_then_quality_decrease_by_one() {
         Item[] items = new Item[] { new Item("foo", 10, 5) };
 
         GildedRose app = new GildedRose(items);
@@ -31,7 +31,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void when_sell_date_is_passed_then_quality_should_decrease_twice() {
+    public void given_a_regular_item_with_no_sellin_and_with_quality_when_pass_a_day_then_quality_decrease_by_two() {
         Item[] items = new Item[] { new Item("foo", 0, 5) };
 
         GildedRose app = new GildedRose(items);
@@ -42,7 +42,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void given_an_item_with_zero_quality_then_the_quality_is_not_negative() {
+    public void given_a_regular_item_with_no_sellin_and_zero_quality_when_pass_a_day_then_the_quality_is_not_negative() {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
 
         GildedRose app = new GildedRose(items);
@@ -53,7 +53,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void given_an_item_with_negative_quality_then_the_quality_not_changes() {
+    public void given_a_regular_item_with_no_sellin_and_negative_quality_when_pass_a_day_then_the_quality_not_changes() {
         Item[] items = new Item[] { new Item("foo", 0, -1) };
 
         GildedRose app = new GildedRose(items);
@@ -64,7 +64,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void the_quality_in_aged_brie_is_increased_by_one() {
+    public void given_an_aged_brie_with_sellin_when_pass_a_day_then_the_quality_increased_by_one() {
         Item[] items = new Item[] { new Item("Aged Brie", 10, 1) };
 
         GildedRose app = new GildedRose(items);
@@ -75,7 +75,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void the_quality_in_aged_brie_is_increased_twice_when_sell_date_is_zero() {
+    public void given_an_aged_brie_with_no_sellin_when_pass_a_day_then_the_quality_is_increased_by_two() {
         Item[] items = new Item[] { new Item("Aged Brie", 0, 1) };
 
         GildedRose app = new GildedRose(items);
