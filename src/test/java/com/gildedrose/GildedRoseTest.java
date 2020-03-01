@@ -40,4 +40,15 @@ public class GildedRoseTest {
 
         assertThat(app.items[0].quality, is(3));
     }
+
+    @Test
+    public void given_an_item_with_zero_quality_then_the_quality_is_not_negative() {
+        Item[] items = new Item[] { new Item("foo", 0, 0) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].quality, is(0));
+    }
 }
