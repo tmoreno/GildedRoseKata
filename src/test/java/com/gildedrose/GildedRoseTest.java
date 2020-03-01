@@ -30,7 +30,7 @@ public class GildedRoseTest {
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality, is(4));
+        assertThatItemQualityIs(app.items[0], 4);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class GildedRoseTest {
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality, is(3));
+        assertThatItemQualityIs(app.items[0], 3);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class GildedRoseTest {
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality, is(0));
+        assertThatItemQualityIs(app.items[0], 0);
     }
 
     @Test
@@ -63,7 +63,7 @@ public class GildedRoseTest {
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality, is(-1));
+        assertThatItemQualityIs(app.items[0], -1);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class GildedRoseTest {
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality, is(2));
+        assertThatItemQualityIs(app.items[0], 2);
     }
 
     @Test
@@ -85,6 +85,10 @@ public class GildedRoseTest {
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality, is(3));
+        assertThatItemQualityIs(app.items[0], 3);
+    }
+
+    private void assertThatItemQualityIs(Item item, int i) {
+        assertThat(item.quality, is(i));
     }
 }
