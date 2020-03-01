@@ -99,6 +99,17 @@ public class GildedRoseTest {
         assertThatItemQualityIs(app.items[0], 3);
     }
 
+    @Test
+    public void the_quality_of_an_item_is_never_more_than_50() {
+        Item[] items = new Item[] { new Item(AGED_BRIE, 10, 50) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThatItemQualityIs(app.items[0], 50);
+    }
+
     private void assertThatItemQualityIs(Item item, int i) {
         assertThat(item.quality, is(i));
     }
