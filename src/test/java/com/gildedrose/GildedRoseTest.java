@@ -23,6 +23,17 @@ public class GildedRoseTest {
     }
 
     @Test
+    public void given_a_regular_item_when_pass_a_day_then_sellin_decrease_by_one() {
+        Item[] items = new Item[] { new Item(REGULAR_ITEM, 10, 0) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].sellIn, is(9));
+    }
+
+    @Test
     public void given_a_regular_item_with_sellin_and_quality_when_pass_a_day_then_quality_decrease_by_one() {
         Item[] items = new Item[] { new Item(REGULAR_ITEM, 10, 5) };
 
