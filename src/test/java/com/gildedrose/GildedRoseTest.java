@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GildedRoseTest {
 
     @Test
-    public void foo() {
+    public void items_name_does_not_change() {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
 
         GildedRose app = new GildedRose(items);
