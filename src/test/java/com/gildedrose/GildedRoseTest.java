@@ -73,4 +73,15 @@ public class GildedRoseTest {
 
         assertThat(app.items[0].quality, is(2));
     }
+
+    @Test
+    public void the_quality_in_aged_brie_is_increased_twice_when_sell_date_is_zero() {
+        Item[] items = new Item[] { new Item("Aged Brie", 0, 1) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].quality, is(3));
+    }
 }
