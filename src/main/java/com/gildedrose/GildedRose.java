@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 class GildedRose {
+    private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -53,10 +55,8 @@ class GildedRose {
     }
 
     private void decreaseQuality(Item item) {
-        if (item.quality > 0) {
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.quality = item.quality - 1;
-            }
+        if (item.quality > 0 && !item.name.equals(SULFURAS)) {
+            item.quality--;
         }
     }
 }
