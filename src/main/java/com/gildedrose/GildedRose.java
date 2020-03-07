@@ -34,14 +34,14 @@ public class GildedRose {
             decreaseSellIn(item);
 
             if (item.sellIn < 0) {
-                if (!item.name.equals(AGED_BRIE)) {
-                    if (!item.name.equals(BACKSTAGE_PASSES)) {
-                        decreaseQuality(item);
-                    } else {
-                        item.quality = 0;
-                    }
-                } else {
+                if (item.name.equals(AGED_BRIE)) {
                     increaseQuality(item);
+                } else {
+                    if (item.name.equals(BACKSTAGE_PASSES)) {
+                        item.quality = 0;
+                    } else {
+                        decreaseQuality(item);
+                    }
                 }
             }
         }
