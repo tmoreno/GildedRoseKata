@@ -26,6 +26,10 @@ public class GildedRose {
                     changeBackstageQuality(item);
                     break;
 
+                case SULFURAS:
+                    changeSulfurasQuality(item);
+                    break;
+
                 default:
                     changeRegularItemQuality(item);
             }
@@ -57,6 +61,10 @@ public class GildedRose {
         }
     }
 
+    private void changeSulfurasQuality(Item item) {
+
+    }
+
     private void changeRegularItemQuality(Item item) {
         decreaseQuality(item);
 
@@ -78,7 +86,7 @@ public class GildedRose {
     }
 
     private void decreaseQuality(Item item) {
-        if (item.quality > 0 && !item.name.equals(SULFURAS)) {
+        if (item.quality > 0) {
             item.quality--;
         }
     }
