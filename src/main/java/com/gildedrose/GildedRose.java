@@ -2,7 +2,7 @@ package com.gildedrose;
 
 class GildedRose {
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-    
+
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -11,8 +11,7 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (!item.name.equals("Aged Brie")
-                    && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 decreaseQuality(item);
             } else {
                 if (item.quality < 50) {
@@ -34,9 +33,7 @@ class GildedRose {
                 }
             }
 
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                item.sellIn = item.sellIn - 1;
-            }
+            decreaseSellIn(item);
 
             if (item.sellIn < 0) {
                 if (!item.name.equals("Aged Brie")) {
@@ -51,6 +48,12 @@ class GildedRose {
                     }
                 }
             }
+        }
+    }
+
+    private void decreaseSellIn(Item item) {
+        if (!item.name.equals(SULFURAS)) {
+            item.sellIn--;
         }
     }
 
