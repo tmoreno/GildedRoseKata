@@ -11,6 +11,7 @@ public class GildedRoseTest {
     private static final String REGULAR_ITEM = "foo";
     private static final String AGED_BRIE = "Aged Brie";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
 
     @Test
     public void items_name_does_not_change() {
@@ -121,6 +122,50 @@ public class GildedRoseTest {
 
         assertThatItemSellinIs(app.items[0], 10);
         assertThatItemQualityIs(app.items[0], 10);
+    }
+
+    @Test
+    public void given_a_backstage_passes_item_with_sellin_more_than_10_when_pass_a_day_then_quality_increased_by_one() {
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 15, 10) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThatItemQualityIs(app.items[0], 11);
+    }
+
+    @Test
+    public void given_a_backstage_passes_item_with_sellin_equals_to_10_when_pass_a_day_then_quality_increased_by_two() {
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 10, 10) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThatItemQualityIs(app.items[0], 12);
+    }
+
+    @Test
+    public void given_a_backstage_passes_item_with_sellin_equals_to_5_when_pass_a_day_then_quality_increased_by_two() {
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 5, 10) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThatItemQualityIs(app.items[0], 13);
+    }
+
+    @Test
+    public void given_a_backstage_passes_item_with_sellin_equals_to_0_when_pass_a_day_then_quality_increased_is_zero() {
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 0, 10) };
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThatItemQualityIs(app.items[0], 0);
     }
 
     private void assertThatItemSellinIs(Item item, int expectedSellIn) {
