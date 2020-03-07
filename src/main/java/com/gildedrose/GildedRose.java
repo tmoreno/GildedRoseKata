@@ -15,23 +15,23 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
+            decreaseSellIn(item);
+
             if (item.name.equals(AGED_BRIE) || item.name.equals(BACKSTAGE_PASSES)) {
                 increaseQuality(item);
 
                 if (item.name.equals(BACKSTAGE_PASSES)) {
-                    if (item.sellIn < 11) {
+                    if (item.sellIn < 10) {
                         increaseQuality(item);
                     }
 
-                    if (item.sellIn < 6) {
+                    if (item.sellIn < 5) {
                         increaseQuality(item);
                     }
                 }
             } else {
                 decreaseQuality(item);
             }
-
-            decreaseSellIn(item);
 
             if (item.sellIn < 0) {
                 if (item.name.equals(AGED_BRIE)) {
