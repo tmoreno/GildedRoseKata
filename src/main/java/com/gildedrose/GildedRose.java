@@ -17,10 +17,14 @@ public class GildedRose {
         for (Item item : items) {
             decreaseSellIn(item);
 
-            if (item.name.equals(AGED_BRIE) || item.name.equals(BACKSTAGE_PASSES)) {
-                increaseQuality(item);
+            switch (item.name) {
+                case AGED_BRIE:
+                    increaseQuality(item);
+                    break;
 
-                if (item.name.equals(BACKSTAGE_PASSES)) {
+                case BACKSTAGE_PASSES:
+                    increaseQuality(item);
+
                     if (item.sellIn < 10) {
                         increaseQuality(item);
                     }
@@ -28,9 +32,11 @@ public class GildedRose {
                     if (item.sellIn < 5) {
                         increaseQuality(item);
                     }
-                }
-            } else {
-                decreaseQuality(item);
+
+                    break;
+
+                default:
+                    decreaseQuality(item);
             }
 
             if (item.sellIn < 0) {
