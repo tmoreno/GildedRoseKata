@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GildedRoseTest {
 
@@ -12,6 +11,7 @@ public class GildedRoseTest {
     private static final String AGED_BRIE = "Aged Brie";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    private static final int SULFURAS_QUALITY = 80;
 
     @Test
     public void items_name_does_not_change() {
@@ -114,14 +114,14 @@ public class GildedRoseTest {
 
     @Test
     public void given_a_sulfuras_item_when_pass_a_day_the_sellin_and_quality_not_changes() {
-        Item[] items = new Item[] { new Item(SULFURAS, 10, 10) };
+        Item[] items = new Item[] { new Item(SULFURAS, 10, SULFURAS_QUALITY) };
 
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
         assertThatItemSellinIs(app.items[0], 10);
-        assertThatItemQualityIs(app.items[0], 10);
+        assertThatItemQualityIs(app.items[0], SULFURAS_QUALITY);
     }
 
     @Test
