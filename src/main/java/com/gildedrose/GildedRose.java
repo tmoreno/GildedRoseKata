@@ -18,17 +18,15 @@ public class GildedRose {
             if (!item.name.equals(AGED_BRIE) && !item.name.equals(BACKSTAGE_PASSES)) {
                 decreaseQuality(item);
             } else {
-                if (item.quality < MAX_QUALITY) {
-                    item.quality = item.quality + 1;
+                increaseQuality(item);
 
-                    if (item.name.equals(BACKSTAGE_PASSES)) {
-                        if (item.sellIn < 11) {
-                            increaseQuality(item);
-                        }
+                if (item.name.equals(BACKSTAGE_PASSES)) {
+                    if (item.sellIn < 11) {
+                        increaseQuality(item);
+                    }
 
-                        if (item.sellIn < 6) {
-                            increaseQuality(item);
-                        }
+                    if (item.sellIn < 6) {
+                        increaseQuality(item);
                     }
                 }
             }
@@ -48,7 +46,7 @@ public class GildedRose {
             }
         }
     }
-    
+
     private void decreaseSellIn(Item item) {
         if (!item.name.equals(SULFURAS)) {
             item.sellIn--;
