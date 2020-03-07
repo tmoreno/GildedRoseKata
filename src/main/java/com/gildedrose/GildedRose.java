@@ -20,35 +20,36 @@ public class GildedRose {
             switch (item.name) {
                 case AGED_BRIE:
                     increaseQuality(item);
+
+                    if (item.sellIn < 0) {
+                        increaseQuality(item);
+                    }
                     break;
 
                 case BACKSTAGE_PASSES:
-                    increaseQuality(item);
-
-                    if (item.sellIn < 10) {
-                        increaseQuality(item);
+                    if (item.sellIn < 0) {
+                        item.quality = 0;
                     }
-
-                    if (item.sellIn < 5) {
+                    else {
                         increaseQuality(item);
+
+                        if (item.sellIn < 10) {
+                            increaseQuality(item);
+                        }
+
+                        if (item.sellIn < 5) {
+                            increaseQuality(item);
+                        }
                     }
 
                     break;
 
                 default:
                     decreaseQuality(item);
-            }
 
-            if (item.sellIn < 0) {
-                if (item.name.equals(AGED_BRIE)) {
-                    increaseQuality(item);
-                }
-                else if (item.name.equals(BACKSTAGE_PASSES)) {
-                    item.quality = 0;
-                }
-                else {
-                    decreaseQuality(item);
-                }
+                    if (item.sellIn < 0) {
+                        decreaseQuality(item);
+                    }
             }
         }
     }
