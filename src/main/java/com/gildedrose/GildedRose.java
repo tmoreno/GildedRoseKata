@@ -23,15 +23,11 @@ public class GildedRose {
 
                     if (item.name.equals(BACKSTAGE_PASSES)) {
                         if (item.sellIn < 11) {
-                            if (item.quality < MAX_QUALITY) {
-                                item.quality = item.quality + 1;
-                            }
+                            increaseQuality(item);
                         }
 
                         if (item.sellIn < 6) {
-                            if (item.quality < MAX_QUALITY) {
-                                item.quality = item.quality + 1;
-                            }
+                            increaseQuality(item);
                         }
                     }
                 }
@@ -47,17 +43,21 @@ public class GildedRose {
                         item.quality = 0;
                     }
                 } else {
-                    if (item.quality < MAX_QUALITY) {
-                        item.quality = item.quality + 1;
-                    }
+                    increaseQuality(item);
                 }
             }
         }
     }
-
+    
     private void decreaseSellIn(Item item) {
         if (!item.name.equals(SULFURAS)) {
             item.sellIn--;
+        }
+    }
+
+    private void increaseQuality(Item item) {
+        if (item.quality < MAX_QUALITY) {
+            item.quality++;
         }
     }
 
