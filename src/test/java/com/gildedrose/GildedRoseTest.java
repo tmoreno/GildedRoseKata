@@ -170,6 +170,17 @@ public class GildedRoseTest {
     }
 
     @Test
+    public void given_a_conjured_item_with_no_sellin_when_pass_a_day_then_quality_decrease_twice() {
+        Item[] items = new Item[] {new Item(CONJURED, 0, 10)};
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThatItemQualityIs(app.items[0], 6);
+    }
+
+    @Test
     public void given_a_conjured_item_when_pass_a_day_then_quality_decrease_twice() {
         Item[] items = new Item[] {new Item(CONJURED, 10, 10)};
 
