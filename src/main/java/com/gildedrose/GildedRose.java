@@ -1,5 +1,11 @@
 package com.gildedrose;
 
+import com.gildedrose.domain.GildedRoseItem;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class GildedRose {
     private static final String AGED_BRIE = "Aged Brie";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
@@ -9,13 +15,22 @@ public class GildedRose {
 
     Item[] items;
 
+    private final List<GildedRoseItem> gildedRoseItems;
+
     public GildedRose(Item[] items) {
         this.items = items;
+
+        this.gildedRoseItems = Arrays.stream(this.items)
+                .map(ItemFactory::createFromItem)
+                .collect(Collectors.toList());
     }
 
     public void updateQuality() {
+        for (GildedRoseItem item : gildedRoseItems) {
+            item.decreaseSellIn();
+        }
+
         for (Item item : items) {
-            decreaseSellIn(item);
 
             switch (item.name) {
                 case AGED_BRIE:
@@ -70,12 +85,6 @@ public class GildedRose {
 
         if (item.sellIn < 0) {
             decreaseQuality(item);
-        }
-    }
-
-    private void decreaseSellIn(Item item) {
-        if (!item.name.equals(SULFURAS)) {
-            item.sellIn--;
         }
     }
 

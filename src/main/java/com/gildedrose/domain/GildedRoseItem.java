@@ -9,4 +9,8 @@ public class GildedRoseItem {
     public GildedRoseItem(Item item) {
         this.item = item;
     }
+
+    public void decreaseSellIn() {
+        item.sellIn--;
+    }
 }
