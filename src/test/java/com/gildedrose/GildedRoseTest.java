@@ -11,6 +11,7 @@ public class GildedRoseTest {
     private static final String AGED_BRIE = "Aged Brie";
     private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     private static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    private static final String CONJURED = "Conjured";
     private static final int SULFURAS_QUALITY = 80;
 
     @Test
@@ -166,6 +167,17 @@ public class GildedRoseTest {
         app.updateQuality();
 
         assertThatItemQualityIs(app.items[0], 0);
+    }
+
+    @Test
+    public void given_a_conjured_item_when_pass_a_day_then_quality_decrease_twice() {
+        Item[] items = new Item[] {new Item(CONJURED, 10, 10)};
+
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThatItemQualityIs(app.items[0], 8);
     }
 
     private void assertThatItemSellinIs(Item item, int expectedSellIn) {
