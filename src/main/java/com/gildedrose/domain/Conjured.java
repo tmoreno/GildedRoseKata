@@ -12,5 +12,10 @@ public class Conjured extends GildedRoseItem {
     public void updateQuality() {
         decreaseQuality();
         decreaseQuality();
+
+        if (getSellIn() < 0) {
+            decreaseQuality();
+            decreaseQuality();
+        }
     }
 }
