@@ -9,6 +9,11 @@ public class Sulfuras extends GildedRoseItem {
     }
 
     @Override
+    public void updateQuality() {
+        // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
+    }
+
+    @Override
     public void decreaseSellIn() {
         // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
     }
